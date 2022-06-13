@@ -18,7 +18,7 @@ Pasos a seguir con respecto al *Entorno Virtual* y *REQUERIMENTS.TXT*
 
 * Vamos a trabajar con UNA sola APP por API, es decir, la API con la cual trabajes solo va tener UNA APP y todos sus templates,static y urls estarán dentro.
 * La carpeta del proyecto principal llamada “SistemaAlumnos” SOLO utilizaremos el archivo “urls.py”.
-* El archivo “settings.py” del proyecto (“myapis”) SOLO se modificará las INSTALLED_APPS para agregar la APP.
+* El archivo “settings.py” del proyecto (“SistemaAlumnos”) SOLO se modificará las INSTALLED_APPS para agregar la APP.
 * UTILIZAREMOS LA NOMENCLATURA camelCase o CamelCase.
 Es una práctica de escritura que consiste en la unión de dos o más palabras sin espacios entre ellas, pero las diferencian una letra mayúscula inicial a partir de la segunda palabra, por ejemplo: miNombreEs.
 
