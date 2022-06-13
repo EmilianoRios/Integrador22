@@ -80,7 +80,7 @@ def home(request):
     return render(request,'nameModule/home.html')
 ```
 
-7. CARGAR LA APP EN "settings.py" DEL PROYECTO PRINCIPAL "SistemaAlumnos".
+6) CARGAR LA APP EN "settings.py" DEL PROYECTO PRINCIPAL "SistemaAlumnos".
 ```
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,7 +93,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-8) EJECUTAR SERVIDOR Y TESTEAR
+7) EJECUTAR SERVIDOR Y TESTEAR
 
 * Testear la API:
    -> `py manage.py runserver`
