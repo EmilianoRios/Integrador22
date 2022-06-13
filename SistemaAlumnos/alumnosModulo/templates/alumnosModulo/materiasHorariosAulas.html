@@ -1,0 +1,53 @@
+{% extends 'alumnosModulo/base.html' %} 
+{% block content %}
+<!-- MATERIAS-HORARIOS-AULAS -->
+<div class="col">
+    <div class="containter border border-1 rounded-1">
+        <p class="h6 pt-2 text-center">Materias - Horarios - Aulas</p>
+        <hr class="m-0">
+        <p class="h6 m-0 text-primary text-center">Año:     2022     Cuatrimestre:    1</p>
+        <hr class="m-0">
+        <table id="materiasHorariosAulas" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Materias cursando en el cuatrimestre</th>
+                    <th>HORARIO</th>
+                    <th>AULA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bases de Datos I - A</td>
+                    <td>Martes de 16:30 a 19:40 Jueves de 16:30 a 19:40</td>
+                    <td>A DEFINIR</td>
+                </tr>
+                <tr>
+                    <td>Probabilidad y Estadistica Inferencial- A</td>
+                    <td>Lunes de 18:00 a 21:10 Miercoles de 18:00 a 21:10</td>
+                    <td>Lunes AULA 11, Miércoles AULA 11</td>
+                </tr>
+                <tr>
+                    <td>Programación III - A</td>
+                    <td>Lunes de 21:20 a 22:50 Miercoles de 21:20 a 22:50 Viernes de 18:00 a 21:10</td>
+                    <td>Lunes AULA 11, Miércoles AULA 11, Viernes AULA 11</td>
+                </tr>
+                <tr>
+                    <td>Redes y Comunicaciones - A</td>
+                    <td>Martes de 19:50 a 23:00 Jueves de 19:50 a 23:00</td>
+                    <td>A DEFINIR</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#materiasHorariosAulas').DataTable();
+});
+</script>
+{% endblock %}

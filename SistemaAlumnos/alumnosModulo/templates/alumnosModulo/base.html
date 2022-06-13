@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<nav>
+    <div class="container-xl">
+        <h1 class="h1 text-center">Universidad Ficticia</h1>
+        <h4 class="h4 text-center">#NombreDelAlumno# #Carrera# #Sede#</h4>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="container-sm">
+                    <div class="accordion" style="width: 300px;" id="accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCero">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCero" aria-expanded="true"
+                                    aria-controls="collapseCero"><strong>Inicio</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseCero" class="accordion-collapse collapse show"
+                                aria-labelledby="headingCero" data-bs-parent="#accordion">
+                                <div class="accordion-body text-center">
+                                    <a href="#">Bienvenido</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne"><strong>Cursado</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordion">
+                                <div class="accordion-body text-center">
+                                    <a href="#">Materias-Horarios-Aulas</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <strong>Reportes</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordion">
+                                <div class="accordion-body text-center">
+                                    <a href="#">Reporte académico</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <strong>Contraseña</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordion">
+                                <div class="accordion-body text-center">
+                                    <a href="#">Cambio de contraseña</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+<footer>
+</footer>
+</html>
