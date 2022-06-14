@@ -16,7 +16,7 @@ Pasos a seguir con respecto al *Entorno Virtual* y *REQUERIMENTS.TXT*
 
 ### Django
 
-* Vamos a trabajar con UNA sola APP por API, es decir, la API con la cual trabajes solo va tener UNA APP y todos sus templates,static y urls estarán dentro.
+* Vamos a trabajar con UNA sola APP por MODULO, es decir, el MODULO con la cual trabajes solo va tener UNA APP y todos sus templates,static y urls estarán dentro.
 * La carpeta del proyecto principal llamada “SistemaAlumnos” SOLO utilizaremos el archivo “urls.py”.
 * El archivo “settings.py” del proyecto (“SistemaAlumnos”) SOLO se modificará las INSTALLED_APPS para agregar la APP.
 * UTILIZAREMOS LA NOMENCLATURA camelCase o CamelCase.
@@ -24,7 +24,7 @@ Es una práctica de escritura que consiste en la unión de dos o más palabras s
 
 #### Pasos
 1) Crearemos la APP y RECORDAR estar en la ruta del proyecto donde se encuentra "manage.py" Documents\GitHub\Integrador22\SistemaAlumnos>
- Ejecutar -> `py manage.py startapp nameApi`.
+ Ejecutar -> `py manage.py startapp nameModule`.
 2) Crear dentro de la APP el archivo "urls.py".
 
 ```
@@ -45,7 +45,7 @@ urlpatterns = [
 # Esta es la estructura que debe tener el archivo "urls.py" dentro de tu APP.
 ```
 
-3) Crear en la raiz de la APP la carpeta "templates" y dentro de ella la carpeta con el nombre de la API "nameModule".
+3) Crear en la raiz de la APP la carpeta "templates" y dentro de ella la carpeta con el nombre del MODULO "nameModule".
 ```
 - templates
   - nameModule
@@ -55,7 +55,7 @@ urlpatterns = [
 # En caso de querer hacer un HTML padre deberás llamar a este de la siguiente manera {% extends 'nameModule/padre.html' %}
 ```
 
-4) Crear en la raiz de la APP la carpeta llamada "static" y dentro de ella la carpeta con el nombre de la API "nameApi" dentro de la carpeta "nameApi" crear las carpetas "css","js","img".
+4) Crear en la raiz de la APP la carpeta llamada "static" y dentro de ella la carpeta con el nombre del MODULO "nameModule" dentro de la carpeta "nameModule" crear las carpetas "css","js","img".
 ```
 - static
   - nameModule
@@ -95,9 +95,9 @@ INSTALLED_APPS = [
 
 7) EJECUTAR SERVIDOR Y TESTEAR
 
-* Testear la API:
+* Testear la MODULO:
    -> `py manage.py runserver`
-   Si la API funciona perfectamente realizar el push, si no, resolver los problemas y luego pushear.
+   Si la MODULO funciona perfectamente realizar el push, si no, resolver los problemas y luego pushear.
 * Realizar el push.
    Primero nos fijaremos si estamos en la ruta de nuestro repositorio en nuestro terminal "Documents\GitHub\Integrador22\" recordar no estar dentro de "SistemaAlumnos". Luego de verificarlo realizaremos los siguientes comandos en el terminal.
 ```
