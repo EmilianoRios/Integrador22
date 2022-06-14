@@ -2,12 +2,12 @@
 {% block content %}
 <!-- MATERIAS-HORARIOS-AULAS -->
 <div class="col">
-    <div class="containter border border-1 rounded-1">
+    <div class="containter border border-1 rounded-1" style="min-width: 900px;">
         <p class="h6 pt-2 text-center">Materias - Horarios - Aulas</p>
         <hr class="m-0">
         <p class="h6 m-0 text-primary text-center">Año:     2022     Cuatrimestre:    1</p>
         <hr class="m-0">
-        <table id="materiasHorariosAulas" class="table table-striped" style="width:100%">
+        <table id="materiasHorariosAulas" class="table table-striped" style="width:100%;">
             <thead>
                 <tr>
                     <th>Materias cursando en el cuatrimestre</th>
@@ -48,6 +48,7 @@ crossorigin="anonymous"></script>
 <script>
 $(document).ready(function () {
     $('#materiasHorariosAulas').DataTable();
+    $()
 });
 </script>
 {% endblock %}

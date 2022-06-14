@@ -11,8 +11,7 @@
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
-
-<nav>
+<body>
     <div class="container-xl">
         <h1 class="h1 text-center">Universidad Ficticia</h1>
         <h4 class="h4 text-center">#NombreDelAlumno# #Carrera# #Sede#</h4>
@@ -22,7 +21,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="container-sm">
-                    <div class="accordion" style="width: 300px;" id="accordion">
+                    <div class="accordion" style="min-width: 300px;" id="accordion">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingCero">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -47,7 +46,7 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                 data-bs-parent="#accordion">
                                 <div class="accordion-body text-center">
-                                    <a href="#">Materias-Horarios-Aulas</a>
+                                    <a href="{% url 'Materias'%}">Materias-Horarios-Aulas</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +60,7 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordion">
                                 <div class="accordion-body text-center">
-                                    <a href="#">Reporte académico</a>
+                                    <a href="{% url 'SituacionAcademica'%}">Reporte académico</a>
                                 </div>
                             </div>
                         </div>
@@ -82,12 +81,10 @@
                     </div>
                 </div>
             </div>
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
-</nav>
-<body>
-{% block content %}
-{% endblock %}
 </body>
 <footer>
 </footer>
