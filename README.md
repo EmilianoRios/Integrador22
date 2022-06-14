@@ -95,9 +95,9 @@ INSTALLED_APPS = [
 
 7) EJECUTAR SERVIDOR Y TESTEAR
 
-* Testear la MODULO:
+* Testear el MODULO:
    -> `py manage.py runserver`
-   Si la MODULO funciona perfectamente realizar el push, si no, resolver los problemas y luego pushear.
+   Si el MODULO funciona perfectamente realizar el push, si no, resolver los problemas y luego pushear.
 * Realizar el push.
    Primero nos fijaremos si estamos en la ruta de nuestro repositorio en nuestro terminal "Documents\GitHub\Integrador22\" recordar no estar dentro de "SistemaAlumnos". Luego de verificarlo realizaremos los siguientes comandos en el terminal.
 ```
