@@ -10,51 +10,24 @@
             <thead>
                 <tr>
                     <th>Materia</th>
-                    <th>Año-Cuat</th>
-                    <th>Condicion C.</th>
-                    <th>Situacion F.</th>
-                    <th>Fecha</th>
-                    <th>Nota</th>
-                    <th>Vigencia</th>
+                    <th>TP1</th>
+                    <th>TP2</th>
+                    <th>PARCIAL</th>
+                    <th>INTEGRADOR</th>
+                    <th>NOTAFINAL</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Álgebra y Lógica Computacional (R. M. Nº 2137/16)</td>
-                    <td>2020 - 1º</td>
-                    <td>Regularizada</td>
-                    <td>Aprobada</td>
-                    <td>22/06/2020</td>
-                    <td>8</td>
-                    <td>28/02/2022</td>
+                {% for nota in notas %}
+                <tr>  
+                    <td>{{ nota.materia }}</td>
+                    <td>{{ nota.valorNotaTP1 }}</td>
+                    <td>{{ nota.valorNotaTP2 }}</td>
+                    <td>{{ nota.valorNotaTP3 }}</td>
+                    <td>{{ nota.valorNotaTP4 }}</td>
+                    <th>{{ nota.valorNotaFinal }}</th>
                 </tr>
-                <tr>
-                    <td>Introduccion a la Informática (R. M. Nº 2137/16)</td>
-                    <td>2020 - 1º</td>
-                    <td>Regularizada</td>
-                    <td>Aprobada</td>
-                    <td>22/06/2020</td>
-                    <td>8</td>
-                    <td>28/02/2022</td>
-                </tr>
-                <tr>
-                    <td>Lenguaje y Comunicación (R. M. Nº 2137/16)</td>
-                    <td>2020 - 1º</td>
-                    <td>Regularizada</td>
-                    <td>Aprobada</td>
-                    <td>22/06/2020</td>
-                    <td>8</td>
-                    <td>28/02/2022</td>
-                </tr>
-                <tr>
-                    <td>Teoría de la Administración (R. M. Nº 2137/16)</td>
-                    <td>2020 - 1º</td>
-                    <td>Regularizada</td>
-                    <td>Aprobada</td>
-                    <td>22/06/2020</td>
-                    <td>9</td>
-                    <td>28/02/2022</td>
-                </tr>
+                {% endfor%}
             </tbody>
         </table>
     </div>

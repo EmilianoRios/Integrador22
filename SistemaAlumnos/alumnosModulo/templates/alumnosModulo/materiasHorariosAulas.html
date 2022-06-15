@@ -12,30 +12,17 @@
                 <tr>
                     <th>Materias cursando en el cuatrimestre</th>
                     <th>HORARIO</th>
-                    <th>AULA</th>
+                    <th>PROFESOR</th>
                 </tr>
             </thead>
             <tbody>
+                {% for materia in materias %}
                 <tr>
-                    <td>Bases de Datos I - A</td>
-                    <td>Martes de 16:30 a 19:40 Jueves de 16:30 a 19:40</td>
-                    <td>A DEFINIR</td>
+                    <td>{{ materia.nombreMateria }}</td>
+                    <td>{{ materia.horario }}</td>
+                    <td>{{ materia.profesor }}</td>
                 </tr>
-                <tr>
-                    <td>Probabilidad y Estadistica Inferencial- A</td>
-                    <td>Lunes de 18:00 a 21:10 Miercoles de 18:00 a 21:10</td>
-                    <td>Lunes AULA 11, Miércoles AULA 11</td>
-                </tr>
-                <tr>
-                    <td>Programación III - A</td>
-                    <td>Lunes de 21:20 a 22:50 Miercoles de 21:20 a 22:50 Viernes de 18:00 a 21:10</td>
-                    <td>Lunes AULA 11, Miércoles AULA 11, Viernes AULA 11</td>
-                </tr>
-                <tr>
-                    <td>Redes y Comunicaciones - A</td>
-                    <td>Martes de 19:50 a 23:00 Jueves de 19:50 a 23:00</td>
-                    <td>A DEFINIR</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

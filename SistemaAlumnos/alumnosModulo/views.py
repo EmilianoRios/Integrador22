@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from BBDD.models import *
 
 # Create your views here.
 
 def materiasAlumnosAulas(request):
-    return render(request,'alumnosModulo/materiasHorariosAulas.html')
+    materias = Materia.objects.all() 
+    return render(request,'alumnosModulo/materiasHorariosAulas.html', {'materias':materias})
 
 def situacionAcademica(request):
-    return render(request,'alumnosModulo/situacionAcademica.html')
+    notas = Nota.objects.all()
+    return render(request,'alumnosModulo/situacionAcademica.html', {'notas':notas})
