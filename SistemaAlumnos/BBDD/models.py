@@ -2,15 +2,17 @@ from django.db import models
 from .choices import sexo,tipoUsuario
 from django.contrib.auth.models import AbstractUser
 
-class Persona(AbstractUser):
+# class Persona(AbstractUser):
+#     genero = models.CharField(max_length=1, choices=sexo, default='M')
+#     dni = models.IntegerField(null=True,blank=True)
+    
+#     class Meta:
+#         abstract = True
+
+class Usuario(AbstractUser):
+
     genero = models.CharField(max_length=1, choices=sexo, default='M')
     dni = models.IntegerField(null=True,blank=True)
-    
-    class Meta:
-        abstract = True
-
-class Usuario(Persona):
-
     tipoUsuario = models.CharField(max_length=20,choices=tipoUsuario,default='U')
 
     def nombreCompleto(self):
