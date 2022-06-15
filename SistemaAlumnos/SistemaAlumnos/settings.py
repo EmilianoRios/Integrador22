@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'alumnosModulo',
+    'profesorModulo',
+    'BBDD',
+
 ]
 
 MIDDLEWARE = [
@@ -75,10 +78,14 @@ WSGI_APPLICATION = 'SistemaAlumnos.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default':{
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'UniversidadSQL',
+        'USER':'root',
+        'PASSWORD':'vlia8038',
+        'HOST':'localhost',
+        'DATABASE_PORT':'',
+    }   
 }
 
 

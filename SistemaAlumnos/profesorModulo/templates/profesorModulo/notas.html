@@ -1,0 +1,55 @@
+{% extends 'profesorModulo/base.html' %} 
+{% block content %}
+<!-- NOTAS-->
+<div class="col">
+    <div class="containter border border-1 rounded-1" style="min-width: 900px;">
+        <p class="h6 pt-2 text-center">Notas</p>
+        <hr class="m-0">
+
+        <p class="h6 m-0 text-primary text-center">Año:    2022     Cuatrimestre:    1</p>
+        <a href="{% url 'agregar_nota' %}">Agregar nuevo alumno</a>
+        <hr class="m-0">
+        <table id="notas_profesor" class="table table-striped" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Alumno</th>
+                    <th>TP N°1</th>
+                    <th>TP N°2</th>
+                    <th>Parcial</th>
+                    <th>Integrador</th>
+                    <th>Nota final</th>
+                    <th>Modificar/Agregar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in notas%}
+                <tr>
+                    <td>{{n.alumno}}</td>
+                    <td>{{n.valorNotaTP1}}</td>
+                    <td>{{n.valorNotaTP2}}</td>
+                    <td>{{n.valorNotaTP3}}</td>
+                    <td>{{n.valorNotaTP4}}</td>
+                    <th>{{n.valorNotaFinal}}</th>
+                    <th><a href="{% url 'editar_nota' n.id %}">     Modificar</a></th>
+                    <th><a href="{% url 'eliminar_nota' n.id %}">     Eliminar</a></th>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#notas_profesor').DataTable();
+    $()
+});
+</script>
+{% endblock %}
