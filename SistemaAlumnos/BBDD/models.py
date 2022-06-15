@@ -1,21 +1,20 @@
 from django.db import models
-from .choices import sexo
+from .choices import sexo,tipoUsuario
+from django.contrib.auth.models import AbstractUser
 
-class Persona(models.Model):
-    nombre = models.CharField(max_length=50,verbose_name='Nombre')
-    apellido = models.CharField(max_length=50,verbose_name='Apellido')
+class Persona(AbstractUser):
     genero = models.CharField(max_length=1, choices=sexo, default='M')
-    dni = models.IntegerField()
+    dni = models.IntegerField(null=True,blank=True)
     
     class Meta:
         abstract = True
 
 class Usuario(Persona):
-    
-    username = models.CharField(max_length=50,verbose_name='username')
-    
+
+    tipoUsuario = models.CharField(max_length=20,choices=tipoUsuario,default='U')
+
     def nombreCompleto(self):
-        return "{} {}".format(self.nombre,self.apellido)
+        return "{} {}, {}".format(self.first_name,self.last_name,self.tipoUsuario)
     
     def __str__(self):
         return self.nombreCompleto()
@@ -24,7 +23,7 @@ class Usuario(Persona):
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
         db_table = 'usuario'
-        ordering = ['apellido', '-nombre']
+        ordering = ['last_name', '-first_name']
 
 class Pais(models.Model):
     nombrePais = models.CharField(max_length=50,verbose_name='NombrePais')
@@ -115,7 +114,7 @@ class Alumno(Usuario):
     anioCursado = models.CharField(max_length=50,verbose_name='anioCursado')
     
     def alumnoDatos(self):
-        return "{} {}".format(self.nombre,self.apellido)
+        return "{} {}".format(self.first_name,self.last_name)
     
     def __str__(self):
         return self.alumnoDatos()
@@ -124,13 +123,13 @@ class Alumno(Usuario):
         verbose_name = 'Alumno'
         verbose_name_plural = 'Alumnos'
         db_table = 'alumno'
-        ordering = ['nombre', '-apellido']
+        ordering = ['first_name', '-last_name']
 
 class Profesor(Usuario):
     anioDictando = models.CharField(max_length=50,verbose_name='anioDictando')
     
     def profesorDatos(self):
-        return "{} {}, años dictando:{}°".format(self.nombre,self.apellido,self.anioDictando)
+        return "{} {}, años dictando:{}°".format(self.first_name,self.last_name,self.anioDictando)
     
     def __str__(self):
         return self.profesorDatos()
@@ -139,7 +138,7 @@ class Profesor(Usuario):
         verbose_name = 'Profesor'
         verbose_name_plural = 'Profesores'
         db_table = 'profesor'
-        ordering = ['nombre', 'apellido', '-anioDictando']
+        ordering = ['first_name', 'last_name', '-anioDictando']
 
 
 class Universidad(models.Model):
@@ -163,7 +162,10 @@ class Sede(models.Model):
     universidad = models.ForeignKey(Universidad,null=True, blank=True,on_delete=models.CASCADE)
     
     def sedeNombre(self):
-        return "{}, {}".format(self.universidad,self.nombreSede)
+        return "{}".format(self.nombreSede)
+
+    def univerdadNombre(self):
+        return "{}".format(self.universidad)
     
     def __str__(self):
         return self.sedeNombre()
@@ -235,8 +237,17 @@ class Materia(models.Model):
     profesor = models.ForeignKey(Profesor,null=True, blank=True,on_delete=models.CASCADE)
     
     def materiaNombre(self):
-        return "{} {} {}".format(self.carrera,self.nombreMateria,self.profesor)
+        return "{}".format(self.nombreMateria)
     
+    def profesorNombre(self):
+        return "{}".format(self.profesor)
+
+    def horarioMateria(self):
+        return "{}".format(self.horario)
+
+    def carreraNombre(self):
+        return "{}".format(self.carrera)
+
     def __str__(self):
         return self.materiaNombre()
     
@@ -247,12 +258,12 @@ class Materia(models.Model):
         ordering = ['carrera','-nombreMateria','-profesor']
     
 class Nota(models.Model):
-    valorNotaTP1 = models.IntegerField(verbose_name='TP1')
-    valorNotaTP2 = models.IntegerField(verbose_name='TP2')
-    valorNotaTP3 = models.IntegerField(verbose_name='TP3')
-    valorNotaTP4 = models.IntegerField(verbose_name='TP4')
+    valorNotaTP1 = models.IntegerField(null=True, blank=True,verbose_name='TP1')
+    valorNotaTP2 = models.IntegerField(null=True, blank=True,verbose_name='TP2')
+    valorNotaTP3 = models.IntegerField(null=True, blank=True,verbose_name='TP3')
+    valorNotaTP4 = models.IntegerField(null=True, blank=True,verbose_name='TP4')
     
-    valorNotaFinal = models.IntegerField(verbose_name='NotaFinal')
+    valorNotaFinal = models.IntegerField(null=True, blank=True,verbose_name='NotaFinal')
     
     materia = models.ForeignKey(Materia,null=True, blank=True,on_delete=models.CASCADE)
     alumno = models.ForeignKey(Alumno,null=True, blank=True,on_delete=models.CASCADE)

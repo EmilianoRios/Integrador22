@@ -44,5 +44,3 @@ def editar_nota(request,id):
         contexto['form'] = formulario
 
     return render(request,'profesorModulo/editar_nota.html', contexto)
-
-

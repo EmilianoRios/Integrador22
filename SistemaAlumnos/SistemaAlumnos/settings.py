@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'alumnosModulo',
     'profesorModulo',
     'BBDD',
-
 ]
 
 MIDDLEWARE = [
@@ -82,7 +81,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'UniversidadSQL',
         'USER':'root',
-        'PASSWORD':'vlia8038',
+        'PASSWORD':'$E2438818L-',
         'HOST':'localhost',
         'DATABASE_PORT':'',
     }   
@@ -124,8 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login'
+LOGIN_URL = '/login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'BBDD.Usuario'
