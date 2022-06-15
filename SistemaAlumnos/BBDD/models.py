@@ -2,15 +2,10 @@ from django.db import models
 from .choices import sexo,tipoUsuario
 from django.contrib.auth.models import AbstractUser
 
-# class Persona(AbstractUser):
-#     genero = models.CharField(max_length=1, choices=sexo, default='M')
-#     dni = models.IntegerField(null=True,blank=True)
-    
-#     class Meta:
-#         abstract = True
+
 
 class Usuario(AbstractUser):
-
+ 
     genero = models.CharField(max_length=1, choices=sexo, default='M')
     dni = models.IntegerField(null=True,blank=True)
     tipoUsuario = models.CharField(max_length=20,choices=tipoUsuario,default='U')
@@ -22,8 +17,8 @@ class Usuario(AbstractUser):
         return self.nombreCompleto()
     
     class Meta:
-        verbose_name = 'Usuario'
-        verbose_name_plural = 'Usuarios'
+        verbose_name = 'username'
+        verbose_name_plural = 'usernames'
         db_table = 'usuario'
         ordering = ['last_name', '-first_name']
 
@@ -111,38 +106,7 @@ class Contacto(models.Model):
         verbose_name_plural = 'Contactos'
         db_table = 'contacto'
         ordering = ['persona', '-email']
-
-class Alumno(Usuario):
-    anioCursado = models.CharField(max_length=50,verbose_name='anioCursado')
-    
-    def alumnoDatos(self):
-        return "{} {}".format(self.first_name,self.last_name)
-    
-    def __str__(self):
-        return self.alumnoDatos()
-    
-    class Meta:
-        verbose_name = 'Alumno'
-        verbose_name_plural = 'Alumnos'
-        db_table = 'alumno'
-        ordering = ['first_name', '-last_name']
-
-class Profesor(Usuario):
-    anioDictando = models.CharField(max_length=50,verbose_name='anioDictando')
-    
-    def profesorDatos(self):
-        return "{} {}, años dictando:{}°".format(self.first_name,self.last_name,self.anioDictando)
-    
-    def __str__(self):
-        return self.profesorDatos()
-    
-    class Meta:
-        verbose_name = 'Profesor'
-        verbose_name_plural = 'Profesores'
-        db_table = 'profesor'
-        ordering = ['first_name', 'last_name', '-anioDictando']
-
-
+        
 class Universidad(models.Model):
     nombreUniversidad= models.CharField(max_length=100,verbose_name='nombreUniversidad')
     
@@ -236,13 +200,13 @@ class Materia(models.Model):
     anio = models.CharField(max_length=50,verbose_name='Año')
     
     carrera = models.ForeignKey(Carrera,null=True, blank=True,on_delete=models.CASCADE)
-    profesor = models.ForeignKey(Profesor,null=True, blank=True,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario,null=True, blank=True,on_delete=models.CASCADE)
     
     def materiaNombre(self):
         return "{}".format(self.nombreMateria)
     
-    def profesorNombre(self):
-        return "{}".format(self.profesor)
+    def usuarioNombre(self):
+        return "{}".format(self.usuario)
 
     def horarioMateria(self):
         return "{}".format(self.horario)
@@ -257,7 +221,7 @@ class Materia(models.Model):
         verbose_name = 'Materia'
         verbose_name_plural = 'Materias'
         db_table = 'materia'
-        ordering = ['carrera','-nombreMateria','-profesor']
+        ordering = ['carrera','-nombreMateria','-usuario']
     
 class Nota(models.Model):
     valorNotaTP1 = models.IntegerField(null=True, blank=True,verbose_name='TP1')
@@ -268,10 +232,10 @@ class Nota(models.Model):
     valorNotaFinal = models.IntegerField(null=True, blank=True,verbose_name='NotaFinal')
     
     materia = models.ForeignKey(Materia,null=True, blank=True,on_delete=models.CASCADE)
-    alumno = models.ForeignKey(Alumno,null=True, blank=True,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario,null=True, blank=True,on_delete=models.CASCADE)
     
     def notaNotas(self):
-        return "{}, {}, Tp1:{}, Tp2:{}, Tp3:{}, Tp4:{}, Nota Final:{}".format(self.materia,self.alumno,self.valorNotaTP1,self.valorNotaTP2,self.valorNotaTP3,self.valorNotaTP4,self.valorNotaFinal)
+        return "{}, {}, Tp1:{}, Tp2:{}, Tp3:{}, Tp4:{}, Nota Final:{}".format(self.materia,self.usuario,self.valorNotaTP1,self.valorNotaTP2,self.valorNotaTP3,self.valorNotaTP4,self.valorNotaFinal)
     
     def __str__(self):
         return self.notaNotas()
@@ -280,4 +244,4 @@ class Nota(models.Model):
         verbose_name = 'Nota'
         verbose_name_plural = 'Notas'
         db_table = 'nota'
-        ordering = ['materia','-alumno','-valorNotaTP1','-valorNotaTP2','-valorNotaTP3','-valorNotaTP4','-valorNotaFinal']
+        ordering = ['materia','-usuario','-valorNotaTP1','-valorNotaTP2','-valorNotaTP3','-valorNotaTP4','-valorNotaFinal']

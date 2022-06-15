@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from .forms import UserRegisterForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-# Create your views here.
+from BBDD.models import *
 
 ''' NAVBAR - MENU
 * LOG IN

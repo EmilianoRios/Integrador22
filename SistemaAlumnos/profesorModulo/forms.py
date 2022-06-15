@@ -15,4 +15,4 @@ class NotaForm(forms.ModelForm):
 
     class Meta:
         model = Nota 
-        fields = ['valorNotaTP1','valorNotaTP2','valorNotaTP3', 'valorNotaTP4', 'valorNotaFinal', 'materia', 'alumno']
+        fields = ['valorNotaTP1','valorNotaTP2','valorNotaTP3', 'valorNotaTP4', 'valorNotaFinal', 'materia', 'usuario']

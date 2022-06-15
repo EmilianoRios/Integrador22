@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'UniversidadSQL',
         'USER':'root',
-        'PASSWORD':'$E2438818L-',
+        'PASSWORD':'vlia8038',
         'HOST':'localhost',
         'DATABASE_PORT':'',
     }   
